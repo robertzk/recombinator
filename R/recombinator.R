@@ -17,18 +17,19 @@
 #'
 #' @param data list. The list of lists to process. It can be in
 #'     homogeneous or heterogeneous format (see the description).
+#' @param id character. Primary key, by default \code{"id"}.
 #' @export
 #' @return the converted data.frame. If not a list, no changes will
 #'     be performed.
 #' @note A warning will be issued if non-standard names (i.e.
 #'     those containing more than alphanumeric, underscore, and period
 #'     characters) are used.
-recombinator <- function(dat) {
+recombinator <- function(dat, id = "id") {
   if (!is.list(dat)) data
   else if (is.character(dat[[1L]])) {
-    homogeneous_recombinator(dat)
+    homogeneous_recombinator(dat, id)
   } else if (is.list(dat[[1L]]) && all(nzchar(names(dat[[1L]])))) {
-    heterogeneous_recombinator(dat)
+    heterogeneous_recombinator(dat, id)
   } else {
     stop("Invalid recombinator format: pass either (1) ",
          "a list whose first element is a character vector of names",
@@ -56,23 +57,28 @@ recombinator <- function(dat) {
 #' @param dat list. The list of lists to process. The first list element is
 #'   a character vector of variable names, and subsequent elements are lists
 #'   of variable values ordered by these variable names.
+#' @inheritParams recombinator
 #' @return the formatted \code{data.frame}
 #' @export
 #' @examples
 #' pre_dataframe <- list(c('variable_one', 'variable_two'), list(1, 'a'), list(2, 'b'))
 #' df <- homogeneous_recombinator(pre_dataframe)
 #' # 2 by 2 dataframe w/ c(1,2), c('a','b') in the columns, respectively.
-homogeneous_recombinator <- function(dat) {
+homogeneous_recombinator <- function(dat, id = "id") {
   warn_on_nonstandard_names(dat)
   predf <- lapply(seq_along(dat[[1]]), function(.) vector('list', length(dat) - 1))
-  for (row_ix in seq_len(length(dat) - 1))
-    for (col_ix in seq_along(dat[[1]]))
+  for (row_ix in seq_len(length(dat) - 1)) {
+    for (col_ix in seq_along(dat[[1]])) {
       predf[[col_ix]][[row_ix]] <-
         if (is.null(tmp <- dat[[row_ix + 1]][[col_ix]])) NA else tmp
+    }
+  }
+
   newdat <- setNames(lapply(predf, unlist), dat[[1]])
   predf  <- data.frame(newdat, stringsAsFactors = FALSE)
-  if ('loan_id' %in% names(predf))
-    predf$loan_id <- as.numeric(predf$loan_id)
+  if (id %in% names(predf)) {
+    predf[[id]]<- as.numeric(predf[[id]])
+  }
   predf
 }
 
@@ -95,6 +101,7 @@ homogeneous_recombinator <- function(dat) {
 #' @param dat list. The list of lists to process. Each row is a named list
 #'   with the names being variable names and the values being respective
 #'   variable values.
+#' @inheritParams recombinator
 #' @return the formatted \code{data.frame}
 #' @export
 #' @examples
@@ -103,7 +110,7 @@ homogeneous_recombinator <- function(dat) {
 #'        list(variable_one = 2, variable_three = 1))
 #' df <- heterogeneous_recombinator(pre_dataframe)
 #' # 3 by 2 dataframe w/ c(1,2), c('a', NA), c(NA, 1) in the columns, respectively.
-heterogeneous_recombinator <- function(dat) {
+heterogeneous_recombinator <- function(dat, id = "id") {
   if (all(sapply(ns <- names(dat), function(x) is.character(x) && nchar(x) > 0)) &&
       length(ns) > 0) {
     dat <- lapply(dat, function(x) unlist(lapply(x, function(y)
@@ -112,25 +119,37 @@ heterogeneous_recombinator <- function(dat) {
     return(data.frame(dat, stringsAsFactors = FALSE))
   }
 
-  if (!any(vapply(dat, is.list, logical(1)))) dat <- list(dat) # Really just one row
+  if (!any(vapply(dat, is.list, logical(1)))) {
+    dat <- list(dat) # Really just one row
+  }
 
   predf <- setNames(
     lapply(seq_along(dat[[1]]), function(.) vector('list', length(dat)))
   , names(dat[[1]]))
-  for (row_ix in seq_along(dat))
+  for (row_ix in seq_along(dat)) {
     for (col_name in names(dat[[row_ix]])) {
-      if (!col_name %in% names(predf))
+      if (!col_name %in% names(predf)) {
         predf[[col_name]] <- vector('list', length(dat))
+      }
+
       predf[[col_name]][[row_ix]] <-
         if (is.null(tmp <- dat[[row_ix]][[col_name]])) NA
         else tmp
     }
-  for (i in seq_along(predf)) for (j in seq_along(predf[[i]]))
-    if (is.null(predf[[i]][[j]])) predf[[i]][[j]] <- NA
+  }
+
+  for (i in seq_along(predf)) {
+    for (j in seq_along(predf[[i]])) {
+      if (is.null(predf[[i]][[j]])) {
+        predf[[i]][[j]] <- NA
+      }
+    }
+  }
+
   newdat <- lapply(predf, unlist)
   warn_on_nonstandard_names(newdat)
   predf <- data.frame(newdat, stringsAsFactors = FALSE)
-  ids <- grepl('_id$', names(predf))
+  ids <- grepl("_id$", names(predf))
   predf[ids] <- lapply(predf[ids], as.numeric)
   predf
 }
