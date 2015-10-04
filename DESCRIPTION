@@ -12,6 +12,8 @@ Depends:
     R (>= 3.0.1)
 License: MIT
 LazyData: true
+Depends:
+    crayon
 Suggests:
     testthat,
     testthatsomemore

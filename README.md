@@ -1,5 +1,5 @@
 R recombinators [![Build Status](https://travis-ci.org/robertzk/recombinator.svg?branch=master)](https://travis-ci.org/robertzk/recombinator) [![Coverage Status](https://coveralls.io/repos/robertzk/recombinator/badge.svg?branch=master)](https://coveralls.io/r/robertzk/recombinator)
-===========
+============
 
 An R utility for turning nested lists into data.frames. This can
 be useful for turning JSON into R lists, and then into data.frames.

@@ -9,10 +9,10 @@
 recombinator(dat, id = "id")
 }
 \arguments{
-\item{id}{character. Primary key, by default \code{"id"}.}
-
-\item{data}{list. The list of lists to process. It can be in
+\item{dat}{list. The list of lists to process. It can be in
 homogeneous or heterogeneous format (see the description).}
+
+\item{id}{character. Primary key, by default \code{"id"}.}
 }
 \value{
 the converted data.frame. If not a list, no changes will

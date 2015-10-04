@@ -15,7 +15,7 @@
 #'     with \code{NA} values.}
 #' }
 #'
-#' @param data list. The list of lists to process. It can be in
+#' @param dat list. The list of lists to process. It can be in
 #'     homogeneous or heterogeneous format (see the description).
 #' @param id character. Primary key, by default \code{"id"}.
 #' @export
