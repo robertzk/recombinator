@@ -24,9 +24,9 @@ There are two supported formats.
     is a character vector giving the names of the data.frame,
     and the subsequent list elements themselves lists of values.
  * __Heterogeneous lists__. A list where each element is a named
-    list of values. In this format, \code{plyr::rbind} will be used
+    list of values. In this format, `plyr::rbind` will be used
     to take the union of all names and impute the ones missing
-    with \code{NA} values.
+    with NA values.
 
 Here are two examples of the respective format:
 
