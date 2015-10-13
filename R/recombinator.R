@@ -25,17 +25,27 @@
 #'     those containing more than alphanumeric, underscore, and period
 #'     characters) are used.
 recombinator <- function(dat, id = "id") {
-  if (!is.list(dat) || is.data.frame(dat)) dat
-  else if (is.character(dat[[1L]])) {
-    homogeneous_recombinator(dat, id)
-  } else if (is.list(dat[[1L]]) && all(nzchar(names(dat[[1L]])))) {
+  if (!is.list(dat) || is.data.frame(dat)) {
+  dat
+  } else if (is.list(dat[[1L]]) && (has_names(dat) || has_names(dat[[1L]]))) {
     heterogeneous_recombinator(dat, id)
+  } else if (length(dat[[1L]]) > 1) {
+    homogeneous_recombinator(dat, id)
   } else {
     stop("Invalid recombinator format: pass either (1) ",
          "a list whose first element is a character vector of names",
          "and the subsequent list elements are unnamed lists of values ",
          "or (2) a list each of whose elements are named lists.", call. = FALSE)
   }
+}
+
+
+#' Checks if a list has names.
+#'
+#' @param dat list. The list to verify.
+#' @return boolean. TRUE if the list is named, FALSE otherwise.
+has_names <- function(dat) {
+  !is.null(names(dat)) && all(nzchar(names(dat)))
 }
 
 #' Process homogeneous batch data.
