@@ -25,7 +25,7 @@
 #'     those containing more than alphanumeric, underscore, and period
 #'     characters) are used.
 recombinator <- function(dat, id = "id") {
-  if (!is.list(dat)) data
+  if (!is.list(dat) || is.data.frame(dat)) dat
   else if (is.character(dat[[1L]])) {
     homogeneous_recombinator(dat, id)
   } else if (is.list(dat[[1L]]) && all(nzchar(names(dat[[1L]])))) {
