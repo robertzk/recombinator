@@ -25,7 +25,7 @@
 #'     those containing more than alphanumeric, underscore, and period
 #'     characters) are used.
 recombinator <- function(dat, id = "id") {
-  if (!is.list(dat)) dat
+  if (!is.list(dat) || is.data.frame(dat)) dat
   if (is.list(dat[[1L]]) && (has_names(dat) || has_names(dat[[1L]]))) {
     heterogeneous_recombinator(dat, id)
   } else if (length(dat[[1L]]) > 1) {
