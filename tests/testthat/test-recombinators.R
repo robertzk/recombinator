@@ -37,7 +37,7 @@ test_that("recombinator calls to homogeneous recombinator correctly #1", {
   expect_identical(recombinator(pre_dataframe), df)
 })
 
-test_that("recombinator calls to homogeneous recombinator correctly #2", {
+test_that("recombinator calls to homogeneous recombinator correctly #2.  Issue #4", {
   pre_dataframe <- list(list("variable_one", "variable_two"), list(1, "a"), list(2, "b"))
   df <- data.frame(variable_one = c(1,2), variable_two = c("a", "b"), stringsAsFactors = FALSE)
   expect_identical(recombinator(pre_dataframe), df)
