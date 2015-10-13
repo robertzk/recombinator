@@ -1,4 +1,3 @@
-
 context("recombinators")
 
 test_that("heterogeneous recombinator can parse a simple example correctly", {
@@ -31,8 +30,14 @@ test_that("recombinator calls to heterogeneous recombinator correctly #2", {
   expect_identical(recombinator(pre_dataframe), df)
 })
 
-test_that("recombinator calls to homogeneous recombinator correctly", {
+test_that("recombinator calls to homogeneous recombinator correctly #1", {
   pre_dataframe <- list(c("variable_one", "variable_two"), list(1, "a"), list(2, "b"))
+  df <- data.frame(variable_one = c(1,2), variable_two = c("a", "b"), stringsAsFactors = FALSE)
+  expect_identical(recombinator(pre_dataframe), df)
+})
+
+test_that("recombinator calls to homogeneous recombinator correctly #2.  Issue #6", {
+  pre_dataframe <- list(list("variable_one", "variable_two"), list(1, "a"), list(2, "b"))
   df <- data.frame(variable_one = c(1,2), variable_two = c("a", "b"), stringsAsFactors = FALSE)
   expect_identical(recombinator(pre_dataframe), df)
 })
