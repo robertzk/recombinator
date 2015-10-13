@@ -16,6 +16,13 @@ test_that("homogeneous recombinator can parse a simple example correctly", {
   expect_identical(homogeneous_recombinator(pre_dataframe), df)
 })
 
+test_that("recombinator returns the input for non-list input. Issue #3", {
+  expect_identical("pizza", recombinator("pizza"))
+  expect_identical(123, recombinator(123))
+  expect_identical(TRUE, recombinator(TRUE))
+  expect_identical(data.frame(a = 1, b = 2), recombinator(data.frame(a = 1, b = 2)))
+})
+
 test_that("recombinator calls to heterogeneous recombinator correctly", {
   pre_dataframe <-
     list(list(variable_one = 1, variable_two = "a"),
