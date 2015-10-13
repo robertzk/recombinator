@@ -1,4 +1,3 @@
-
 context("recombinators")
 
 test_that("heterogeneous recombinator can parse a simple example correctly", {
