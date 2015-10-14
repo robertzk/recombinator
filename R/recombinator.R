@@ -27,16 +27,34 @@
 recombinator <- function(dat, id = "id") {
   if (!is.list(dat) || is.data.frame(dat)) {
   dat
-  } else if (is.list(dat[[1L]]) && (has_names(dat) || has_names(dat[[1L]]))) {
+  } else if (is_heterogeneous(dat)) {
     heterogeneous_recombinator(dat, id)
-  } else if (length(dat[[1L]]) > 1) {
+  } else if (is_homogeneous(dat)) {
     homogeneous_recombinator(dat, id)
   } else {
     stop("Invalid recombinator format: pass either (1) ",
-         "a list whose first element is a character vector of names",
+         "a list whose first element is a character vector of names ",
          "and the subsequent list elements are unnamed lists of values ",
          "or (2) a list each of whose elements are named lists.", call. = FALSE)
   }
+}
+
+
+#' Is this heterogeneous data?
+#' @param dat list. The list to verify.
+#' @return boolean. TRUE if the list is heterogeneous, FALSE otherwise.
+is_heterogeneous <- function(dat) {
+  is.list(dat[[1L]]) && (has_names(dat) || has_names(dat[[1L]]))
+}
+
+#' Is this homogeneous data?
+#' @param dat list. The list to verify.
+#' @return boolean. TRUE if the list is heterogeneous, FALSE otherwise.
+is_homogeneous <- function(dat) {
+  if (is_heterogeneous(dat)) { FALSE }
+  else if (is.character(dat[[1L]]) && !("list" %in% sapply(dat, class))) { TRUE }
+  else if (length(dat[[1L]]) > 1) { TRUE }
+  else { FALSE }
 }
 
 
