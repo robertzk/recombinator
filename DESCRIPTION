@@ -3,7 +3,7 @@ Type: Package
 Title: recombinator (http://github.com/robertzk/recombinator)
 Description: R tools for turning nested lists into data.frames
     in an orderly manner.
-Version: 0.1.2
+Version: 0.1.3
 Author: Robert Krzyzanowski <technoguyrob@gmail.com>
 Maintainer: Robert Krzyzanowski <technoguyrob@gmail.com>
 Authors@R: c(person("Robert", "Krzyzanowski",

@@ -1,3 +1,7 @@
+# Version 0.1.3
+
+* Recombinator calls out to homogeneous recombinator correctly for depth-0 lists. Resolves #8.
+
 # Version 0.1.2
 
 * Recombinator calls out to homogeneous recombinator correctly when the names are a list within a list (instead of a vector). Resolves #6.
