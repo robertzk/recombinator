@@ -33,7 +33,7 @@ recombinator <- function(dat, id = "id") {
     homogeneous_recombinator(dat, id)
   } else {
     stop("Invalid recombinator format: pass either (1) ",
-         "a list whose first element is a character vector of names",
+         "a list whose first element is a character vector of names ",
          "and the subsequent list elements are unnamed lists of values ",
          "or (2) a list each of whose elements are named lists.", call. = FALSE)
   }
