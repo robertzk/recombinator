@@ -49,6 +49,17 @@ test_that("recombinator calls to homogeneous recombinator correctly #2.  Issue #
   expect_identical(recombinator(pre_dataframe), df)
 })
 
+test_that("recombinator calls to homogeneous recombinator for depth-0 lists. Issue #8", {
+  pre_dataframe <- list("title", 1, 2, 3)
+  df <- data.frame(title = c(1, 2, 3))
+  expect_identical(recombinator(pre_dataframe), df)
+})
+
+test_that("recombinator doesn't recombinate a depth-0 list with no first name.", {
+  pre_dataframe <- list(1, 2, 3)
+  expect_error(recombinator(pre_dataframe))
+})
+
 test_that("names that are different than make.names are nonstandard", {
   expect_warning(warn_on_nonstandard_names(list(`x:2` = 2)))
 })
@@ -64,5 +75,3 @@ test_that("a list with no names is not unstandard", {
 test_that("recombinator warns about nonstandard names", {
   expect_warning(homogeneous_recombinator(list(`x:2` = 2)))
 })
-
-
