@@ -12,7 +12,9 @@ Authors@R: c(person("Peter", "Hurford", email = "peter@peterhurford.com", role =
 License: MIT
 LazyData: true
 Depends:
-    R (>= 3.0.1),
+    R (>= 3.0.1)
+Imports:
+    utils,
     crayon
 Suggests:
     testthat,
