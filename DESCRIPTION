@@ -9,7 +9,7 @@ Maintainer: Peter Hurford <peter@peterhurford.com>
 Authors@R: c(person("Peter", "Hurford", email = "peter@peterhurford.com", role = c("aut")),
              person("Robert", "Krzyzanowski",
                email = "technoguyrob@gmail.com", role = c("aut", "cre")))
-License: MIT
+License: MIT + file LICENSE
 LazyData: true
 Depends:
     R (>= 3.0.1)
