@@ -4,11 +4,10 @@ Title: recombinator (http://github.com/robertzk/recombinator)
 Description: R tools for turning nested lists into data.frames
     in an orderly manner.
 Version: 1.0.0
-Author: Robert Krzyzanowski <technoguyrob@gmail.com>, Peter Hurford <peter@peterhurford.com>
 Maintainer: Peter Hurford <peter@peterhurford.com>
-Authors@R: c(person("Peter", "Hurford", email = "peter@peterhurford.com", role = c("aut")),
+Authors@R: c(person("Peter", "Hurford", email = "peter@peterhurford.com", role = c("aut", "cre")),
              person("Robert", "Krzyzanowski",
-               email = "technoguyrob@gmail.com", role = c("aut", "cre")))
+               email = "technoguyrob@gmail.com", role = c("aut")))
 License: MIT + file LICENSE
 LazyData: true
 Depends:
