@@ -1,3 +1,7 @@
+# Version 1.0.0
+
+* Create a CRAN ready version of the package.
+
 # Version 0.1.3
 
 * Recombinator calls out to homogeneous recombinator correctly for depth-0 lists. Resolves #8.
