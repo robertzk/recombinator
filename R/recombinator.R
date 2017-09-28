@@ -102,7 +102,7 @@ homogeneous_recombinator <- function(dat, id = "id") {
     }
   }
 
-  newdat <- utils::setNames(lapply(predf, unlist), dat[[1]])
+  newdat <- stats::setNames(lapply(predf, unlist), dat[[1]])
   predf  <- data.frame(newdat, stringsAsFactors = FALSE)
   if (id %in% names(predf)) {
     predf[[id]]<- as.numeric(predf[[id]])
@@ -151,7 +151,7 @@ heterogeneous_recombinator <- function(dat, id = "id") {
     dat <- list(dat) # Really just one row
   }
 
-  predf <- utils::setNames(
+  predf <- stats::setNames(
     lapply(seq_along(dat[[1]]), function(.) vector('list', length(dat)))
   , names(dat[[1]]))
   for (row_ix in seq_along(dat)) {
