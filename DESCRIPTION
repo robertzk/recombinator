@@ -1,6 +1,6 @@
 Package: recombinator
 Type: Package
-Title: recombinator (http://github.com/robertzk/recombinator)
+Title: Recombinate Nested Lists to Dataframes
 Description: R tools for turning nested lists into data.frames
     in an orderly manner.
 Version: 1.0.0
