@@ -10,7 +10,7 @@ Installation
 The latest stable build can be downloaded from CRAN:
 
 ```R
-install.packages("cran")
+install.packages("recombinator")
 ```
 
 To install the latest development builds directly from GitHub, run this instead:
