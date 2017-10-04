@@ -7,7 +7,12 @@ be useful for turning JSON into R lists, and then into data.frames.
 Installation
 ------------
 
-This package is not yet available from CRAN (as of October 5, 2015).
+The latest stable build can be downloaded from CRAN:
+
+```R
+install.packages("cran")
+```
+
 To install the latest development builds directly from GitHub, run this instead:
 
 ```R

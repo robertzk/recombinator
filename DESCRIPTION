@@ -1,19 +1,20 @@
 Package: recombinator
 Type: Package
-Title: recombinator (http://github.com/robertzk/recombinator)
-Description: R tools for turning nested lists into data.frames
-    in an orderly manner.
-Version: 0.1.3
-Author: Robert Krzyzanowski <technoguyrob@gmail.com>
-Maintainer: Robert Krzyzanowski <technoguyrob@gmail.com>
-Authors@R: c(person("Robert", "Krzyzanowski",
-    email = "technoguyrob@gmail.com", role = c("aut", "cre")))
-License: MIT
+Title: Recombinate Nested Lists to Dataframes
+Description: Turns nested lists into data.frames in an orderly manner.
+Version: 1.0.0
+Maintainer: Peter Hurford <peter@peterhurford.com>
+Authors@R: c(person("Peter", "Hurford", email = "peter@peterhurford.com", role = c("aut", "cre")),
+             person("Robert", "Krzyzanowski",
+               email = "technoguyrob@gmail.com", role = c("aut")))
+License: MIT + file LICENSE
 LazyData: true
 Depends:
-    R (>= 3.0.1),
+    R (>= 3.0.1)
+Imports:
+    stats,
     crayon
 Suggests:
-    testthat,
-    testthatsomemore
+    testthat
 Roxygen: list(wrap = FALSE)
+RoxygenNote: 6.0.1
