@@ -1,3 +1,7 @@
+# Version 1.0.1
+
+* Re-relaese for CRAN.
+
 # Version 1.0.0
 
 * Create a CRAN ready version of the package.

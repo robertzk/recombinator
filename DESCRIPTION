@@ -2,7 +2,7 @@ Package: recombinator
 Type: Package
 Title: Recombinate Nested Lists to Dataframes
 Description: Turns nested lists into data.frames in an orderly manner.
-Version: 1.0.0
+Version: 1.0.1
 Maintainer: Peter Hurford <peter@peterhurford.com>
 Authors@R: c(person("Peter", "Hurford", email = "peter@peterhurford.com", role = c("aut", "cre")),
              person("Robert", "Krzyzanowski",
