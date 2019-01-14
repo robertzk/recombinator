@@ -1,7 +1,11 @@
-language: c
-sudo: false
-git:
-  submodules: false
+language: r
+r:
+  - oldrel
+  - release
+  - devel
+repos:
+    CRAN: https://cloud.r-project.org
+    ropensci: http://packages.ropensci.org
 addons:
   apt:
     sources:
@@ -19,14 +23,14 @@ env:
 cache:
   directories:
     $R_LIBS_USER
-before_script:
+install:
   - mkdir -p "$R_LIBS_USER"
-  - Rscript -e 'if (!require("git2r")) install.packages("git2r", repos = "http://cran.rstudio.com/")'
-  - Rscript -e 'if (!require("devtools")) install.packages("devtools", repos = "http://cran.rstudio.com/")'
+  - Rscript -e 'if (!require("git2r")) install.packages("git2r")'
+  - Rscript -e 'if (!require("devtools")) install.packages("devtools")'
   - Rscript -e 'if (!require("roxygen2")) devtools::install_github("klutometis/roxygen@v5.0.1")'
   - Rscript -e 'if (!require("lintr")) devtools::install_github("jimhester/lintr")'
   - Rscript -e 'if (!require("covr")) devtools::install_github("jimhester/covr")'
-  - Rscript -e 'devtools::install_deps(repos = "http://cran.rstudio.com", dependencies = TRUE)'
+  - Rscript -e 'devtools::install_deps(dependencies = TRUE)'
 script:
   - Rscript -e 'try(devtools::install(".")); r <- rcmdcheck::rcmdcheck(".", args = c("--no-manual")); l <- lintr::lint_package("."); print(l); quit(save = "no", status = if (length(c(r$errors, r$warnings, l)) > 1 || grepl("FAILED", r$output$stdout)) { 1 } else { 0 }, runLast = FALSE)'
 after_success:
