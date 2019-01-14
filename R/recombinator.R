@@ -157,7 +157,7 @@ heterogeneous_recombinator <- function(dat, id = "id") {
   for (row_ix in seq_along(dat)) {
     for (col_name in names(dat[[row_ix]])) {
       if (!col_name %in% names(predf)) {
-        predf[[col_name]] <- vector('list', length(dat))
+        predf[[col_name]] <- vector("list", length(dat))
       }
 
       predf[[col_name]][[row_ix]] <-
