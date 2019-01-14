@@ -11,6 +11,7 @@ addons:
     sources:
       - r-packages-precise
     packages:
+      - libgit2-dev
       - r-base-dev
       - r-recommended
       - pandoc
@@ -27,7 +28,7 @@ install:
   - mkdir -p "$R_LIBS_USER"
   - Rscript -e 'if (!require("git2r")) install.packages("git2r")'
   - Rscript -e 'if (!require("devtools")) install.packages("devtools")'
-  - Rscript -e 'if (!require("roxygen2")) devtools::install_github("klutometis/roxygen@v5.0.1")'
+  - Rscript -e 'if (!require("roxygen2")) install.packages("roxygen2")'
   - Rscript -e 'if (!require("lintr")) devtools::install_github("jimhester/lintr")'
   - Rscript -e 'if (!require("covr")) devtools::install_github("jimhester/covr")'
   - Rscript -e 'devtools::install_deps(dependencies = TRUE)'
