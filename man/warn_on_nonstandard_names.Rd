@@ -10,7 +10,7 @@ warn_on_nonstandard_names(data)
 \item{data}{list. A list to convert to a data.frame.}
 }
 \value{
-Nothing, but a \code{warning} if the names will be 
+Nothing, but a \code{warning} if the names will be
    mangled due to R's \code{\link{make.names}}.
 }
 \description{

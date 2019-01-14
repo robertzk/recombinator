@@ -185,7 +185,7 @@ heterogeneous_recombinator <- function(dat, id = "id") {
 #' Warn if names will be changed when converting to a data.frame.
 #'
 #' @param data list. A list to convert to a data.frame.
-#' @return Nothing, but a \code{warning} if the names will be 
+#' @return Nothing, but a \code{warning} if the names will be
 #'    mangled due to R's \code{\link{make.names}}.
 warn_on_nonstandard_names <- function(data) {
   if (!identical(names(data), make.names(names(data))) && !is.null(names(data))) {
