@@ -1,3 +1,8 @@
+# Version 1.0.1
+
+* Re-release for CRAN.
+* Updated Travis. Added linter and fixed linter errors.
+
 # Version 1.0.0
 
 * Create a CRAN ready version of the package.
