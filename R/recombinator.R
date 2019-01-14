@@ -94,7 +94,7 @@ has_names <- function(dat) {
 #' # 2 by 2 dataframe w/ c(1,2), c('a','b') in the columns, respectively.
 homogeneous_recombinator <- function(dat, id = "id") {
   warn_on_nonstandard_names(dat)
-  predf <- lapply(seq_along(dat[[1]]), function(.) vector('list', length(dat) - 1))
+  predf <- lapply(seq_along(dat[[1]]), function(.) vector("list", length(dat) - 1))
   for (row_ix in seq_len(length(dat) - 1)) {
     for (col_ix in seq_along(dat[[1]])) {
       predf[[col_ix]][[row_ix]] <-
@@ -105,7 +105,7 @@ homogeneous_recombinator <- function(dat, id = "id") {
   newdat <- stats::setNames(lapply(predf, unlist), dat[[1]])
   predf  <- data.frame(newdat, stringsAsFactors = FALSE)
   if (id %in% names(predf)) {
-    predf[[id]]<- as.numeric(predf[[id]])
+    predf[[id]] <- as.numeric(predf[[id]])
   }
   predf
 }
@@ -152,7 +152,7 @@ heterogeneous_recombinator <- function(dat, id = "id") {
   }
 
   predf <- stats::setNames(
-    lapply(seq_along(dat[[1]]), function(.) vector('list', length(dat)))
+    lapply(seq_along(dat[[1]]), function(.) vector("list", length(dat)))
   , names(dat[[1]]))
   for (row_ix in seq_along(dat)) {
     for (col_name in names(dat[[row_ix]])) {
@@ -196,4 +196,3 @@ warn_on_nonstandard_names <- function(data) {
       paste(diffs, collapse = "\n"), "\n\n")
   }
 }
-
